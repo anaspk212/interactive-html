@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Winnipeg Action Cam Rental — Market Research</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f2; color: #1a1a18; padding: 24px 16px; line-height: 1.5; }
+  .container { max-width: 860px; margin: 0 auto; }
+  h1 { font-size: 18px; font-weight: 500; margin-bottom: 4px; color: #1a1a18; }
+  .subtitle { font-size: 13px; color: #6b6b67; margin-bottom: 24px; }
+  .tab-row { display: flex; gap: 6px; margin-bottom: 1.5rem; flex-wrap: wrap; }
+  .tab { padding: 6px 14px; border: 0.5px solid #c8c7bf; border-radius: 8px; font-size: 13px; cursor: pointer; background: transparent; color: #6b6b67; transition: background 0.1s; }
+  .tab:hover { background: #ebebе7; }
+  .tab.active { background: #e8e8e4; color: #1a1a18; border-color: #9b9b96; font-weight: 500; }
+  .section { display: none; }
+  .section.active { display: block; }
+  .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-bottom: 1.5rem; }
+  .metric-card { background: #e8e8e4; border-radius: 8px; padding: 14px 16px; }
+  .metric-label { font-size: 12px; color: #6b6b67; margin: 0 0 4px; }
+  .metric-value { font-size: 22px; font-weight: 500; margin: 0; color: #1a1a18; }
+  .metric-sub { font-size: 12px; color: #9b9b96; margin: 2px 0 0; }
+  .card { background: #fff; border: 0.5px solid #ddddd8; border-radius: 12px; padding: 1rem 1.25rem; margin-bottom: 1rem; }
+  .badge { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 8px; margin-right: 4px; white-space: nowrap; }
+  .badge-warn { background: #FAEEDA; color: #854F0B; }
+  .badge-info { background: #E6F1FB; color: #185FA5; }
+  .badge-success { background: #EAF3DE; color: #3B6D11; }
+  .badge-danger { background: #FCEBEB; color: #A32D2D; }
+  .badge-gray { background: #e8e8e4; color: #6b6b67; }
+  .comp-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; padding: 10px 0; border-bottom: 0.5px solid #ddddd8; font-size: 14px; }
+  .comp-row:last-child { border-bottom: none; }
+  .comp-name { font-weight: 500; color: #1a1a18; }
+  .comp-detail { font-size: 12px; color: #6b6b67; margin-top: 3px; }
+  .price-tag { font-weight: 500; font-size: 15px; color: #1a1a18; white-space: nowrap; }
+  .table-wrap { overflow-x: auto; }
+  table.pricing { width: 100%; border-collapse: collapse; font-size: 13px; }
+  table.pricing th { text-align: left; padding: 8px 10px; color: #6b6b67; font-weight: 500; border-bottom: 0.5px solid #ddddd8; font-size: 12px; }
+  table.pricing td { padding: 9px 10px; border-bottom: 0.5px solid #ddddd8; color: #1a1a18; vertical-align: top; }
+  table.pricing tr:last-child td { border-bottom: none; }
+  .gap-tag { background: #E1F5EE; color: #0F6E56; border: 0.5px solid #5DCAA5; font-size: 12px; padding: 3px 9px; border-radius: 8px; display: inline-block; margin: 3px 3px 3px 0; }
+  .section-title { font-size: 11px; font-weight: 500; color: #9b9b96; text-transform: uppercase; letter-spacing: 0.07em; margin: 0 0 10px; }
+  .action-btn { padding: 7px 14px; border: 0.5px solid #c8c7bf; border-radius: 8px; background: transparent; cursor: pointer; font-size: 13px; color: #1a1a18; margin-top: 8px; margin-right: 6px; }
+  .action-btn:hover { background: #e8e8e4; }
+  .note { font-size: 12px; color: #9b9b96; margin-top: 8px; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>Winnipeg Action Cam Rental — Market Research</h1>
+  <p class="subtitle">Competitive landscape, pricing benchmarks & market gaps · April 2026</p>
+
+  <div class="tab-row">
+    <button class="tab active" onclick="show('overview',this)">Overview</button>
+    <button class="tab" onclick="show('competitors',this)">Competitors</button>
+    <button class="tab" onclick="show('pricing',this)">Pricing benchmark</button>
+    <button class="tab" onclick="show('gaps',this)">Market gaps</button>
+    <button class="tab" onclick="show('startup',this)">Startup considerations</button>
+  </div>
+
+  <div id="overview" class="section active">
+    <div class="grid-2">
+      <div class="metric-card"><p class="metric-label">Winnipeg action cam rentals available</p><p class="metric-value">~0</p><p class="metric-sub">No dedicated action cam rental in Winnipeg</p></div>
+      <div class="metric-card"><p class="metric-label">Known Winnipeg competitors</p><p class="metric-value">3 stores</p><p class="metric-sub">Frank Gear · Don Photo · Henry's (no rentals)</p></div>
+      <div class="metric-card"><p class="metric-label">Global action cam market (sports segment)</p><p class="metric-value">47%</p><p class="metric-sub">Sports/adventure is largest segment by 2035</p></div>
+      <div class="metric-card"><p class="metric-label">North America market share</p><p class="metric-value">34.8%</p><p class="metric-sub">Outdoor/rec culture + premium ASPs</p></div>
+    </div>
+    <div class="card">
+      <p class="section-title">Key findings</p>
+      <div class="comp-row"><div><div class="comp-name">Henry's — exited rentals</div><div class="comp-detail">Henry's Canada confirmed it no longer offers rental products. Removes a major national competitor from the Winnipeg market entirely.</div></div><span class="badge badge-success">Opportunity</span></div>
+      <div class="comp-row"><div><div class="comp-name">Frank Gear — production-focused</div><div class="comp-detail">40+ years in Winnipeg. Targets film/TV production crews. High-end gear (8K cameras, lighting trucks). Not serving hobbyists or action sports consumers.</div></div><span class="badge badge-info">Indirect competitor</span></div>
+      <div class="comp-row"><div><div class="comp-name">Don Photo — retail, unknown rental scope</div><div class="comp-detail">Long-established Winnipeg photo retailer. Rental offering needs direct verification (call/visit).</div></div><span class="badge badge-warn">Verify</span></div>
+      <div class="comp-row"><div><div class="comp-name">No dedicated action cam rental shop exists in Winnipeg</div><div class="comp-detail">GoPro / DJI Osmo / Insta360 rentals are available in Vancouver and Toronto — nothing confirmed in Manitoba.</div></div><span class="badge badge-success">Clear gap</span></div>
+    </div>
+  </div>
+
+  <div id="competitors" class="section">
+    <p class="section-title">Winnipeg — known players</p>
+    <div class="card">
+      <div class="comp-row"><div><div class="comp-name">Frank Gear (FRANK)</div><div class="comp-detail">Winnipeg Film Group adjacent · Film/TV production house · 40+ years operating · Targets professional productions, not consumers · No action cam/GoPro inventory confirmed · Request-a-quote model</div></div><div style="text-align:right"><span class="badge badge-gray">Professional</span><div class="price-tag" style="margin-top:6px">Quote-based</div></div></div>
+      <div class="comp-row"><div><div class="comp-name">Henry's Camera (Kenaston Blvd)</div><div class="comp-detail">National chain · Sales-only, no rentals · Carries GoPro, DJI for purchase · Strong foot traffic, workshop events · Closed Sundays</div></div><div style="text-align:right"><span class="badge badge-danger">No rentals</span></div></div>
+      <div class="comp-row"><div><div class="comp-name">Don Photo</div><div class="comp-detail">Established local photo retailer · Rental scope unconfirmed — direct verification required · Focus: photography equipment</div></div><div style="text-align:right"><span class="badge badge-warn">Verify scope</span></div></div>
+      <div class="comp-row"><div><div class="comp-name">Winnipeg Film Group</div><div class="comp-detail">Non-profit artist-run org · Has camera accessories, gimbals, audio/lighting rental · Limited inventory, booking by appointment · Not consumer-facing for action sports</div></div><div style="text-align:right"><span class="badge badge-gray">Non-profit</span></div></div>
+      <div class="comp-row"><div><div class="comp-name">Butterknife Creative</div><div class="comp-detail">Video production studio, not a rental shop · May have incidental gear for productions they shoot · Not open to public rental</div></div><div style="text-align:right"><span class="badge badge-gray">Production only</span></div></div>
+      <div class="comp-row"><div><div class="comp-name">Facebook Marketplace / Kijiji</div><div class="comp-detail">Peer-to-peer informal rentals occasionally appear · Unreliable availability · No insurance, no formal rental agreement · Signals latent demand</div></div><div style="text-align:right"><span class="badge badge-info">P2P signal</span></div></div>
+    </div>
+    <p class="section-title">Out-of-market benchmarks</p>
+    <div class="card">
+      <div class="comp-row"><div><div class="comp-name">Vancouver Gearbase / BorrowLenses (US)</div><div class="comp-detail">Online rental with mail delivery · GoPro HERO13 from $20–30/day USD · Ships to Canada but adds 3–5 days lead time · Not viable for same-weekend rentals</div></div><div style="text-align:right"><span class="badge badge-info">Remote option</span></div></div>
+      <div class="comp-row"><div><div class="comp-name">Toronto / Vancouver local shops</div><div class="comp-detail">Multiple dedicated action cam rentals exist · Validates model · $25–45 CAD/day for GoPro-class cameras · Winnipeg has none of these</div></div><div style="text-align:right"><span class="badge badge-success">Proven elsewhere</span></div></div>
+    </div>
+  </div>
+
+  <div id="pricing" class="section">
+    <p class="section-title">Benchmark pricing — comparable markets (CAD est.)</p>
+    <div class="table-wrap">
+      <table class="pricing">
+        <thead><tr><th>Camera</th><th>1 day</th><th>Weekend</th><th>7 days</th><th>Source/note</th></tr></thead>
+        <tbody>
+          <tr><td>GoPro HERO13 Black</td><td>~$20–30</td><td>~$45–65</td><td>~$95–130</td><td>Toronto/Vancouver market est.</td></tr>
+          <tr><td>DJI Osmo Action 5 Pro</td><td>~$22–32</td><td>~$50–70</td><td>~$100–140</td><td>Vancouver market est.</td></tr>
+          <tr><td>DJI Osmo Pocket 3</td><td>~$25–35</td><td>~$40–55</td><td>~$90–120</td><td>Vancouver Gearbase (est.)</td></tr>
+          <tr><td>Insta360 X4 (360°)</td><td>~$30–45</td><td>~$50–70</td><td>~$110–150</td><td>Vancouver market est.</td></tr>
+          <tr><td>DJI Mini 5 Pro drone</td><td>~$80–120</td><td>~$130–180</td><td>~$250–350</td><td>Vancouver / BC market</td></tr>
+          <tr><td>Accessory bundle</td><td>+$5–10</td><td>+$8–15</td><td>+$20–30</td><td>Upsell add-on (standard)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">Note: Winnipeg-specific pricing unavailable — no local action cam rental shops identified. Rates estimated from Vancouver/Toronto benchmarks. Winnipeg may support slight premium given zero local competition.</p>
+  </div>
+
+  <div id="gaps" class="section">
+    <p class="section-title">Gaps in the Winnipeg market</p>
+    <div class="card">
+      <div style="margin-bottom: 12px;">
+        <span class="gap-tag">No GoPro rental in Winnipeg</span>
+        <span class="gap-tag">No DJI Osmo rental in Winnipeg</span>
+        <span class="gap-tag">No 360° cam rental locally</span>
+        <span class="gap-tag">Henry's exited rentals entirely</span>
+        <span class="gap-tag">No consumer drone rental locally</span>
+        <span class="gap-tag">No weekend/event package available</span>
+        <span class="gap-tag">No online booking platform locally</span>
+      </div>
+    </div>
+    <p class="section-title">Target customer segments — Winnipeg context</p>
+    <div class="card">
+      <div class="comp-row"><div><div class="comp-name">Events & weddings</div><div class="comp-detail">Groomsmen/bridal parties wanting POV footage · Weekend multi-unit rentals · High willingness to pay for a complete weekend kit</div></div><span class="badge badge-success">High demand</span></div>
+      <div class="comp-row"><div><div class="comp-name">Outdoor sports (summer/winter)</div><div class="comp-detail">Skiing at Assiniboine Park hills, snowmobile, mountain biking, paddleboarding on Red River · Seasonal peaks · Spring/summer and winter</div></div><span class="badge badge-success">Strong seasonal</span></div>
+      <div class="comp-row"><div><div class="comp-name">Content creators & vloggers</div><div class="comp-detail">Try-before-you-buy use case · Short 1–2 day rentals · Potential conversion to purchase upsells</div></div><span class="badge badge-info">Growing</span></div>
+      <div class="comp-row"><div><div class="comp-name">Tourism & travel</div><div class="comp-detail">Visiting Riding Mountain, Churchill, Whiteshell · Multi-day rentals · International visitors unfamiliar with local shops</div></div><span class="badge badge-info">Underserved</span></div>
+      <div class="comp-row"><div><div class="comp-name">Corporate / real estate (future)</div><div class="comp-detail">Shindico use case — site documentation, property marketing · Natural bridge from personal → professional</div></div><span class="badge badge-warn">Phase 2</span></div>
+    </div>
+  </div>
+
+  <div id="startup" class="section">
+    <p class="section-title">Startup considerations</p>
+    <div class="card">
+      <div class="comp-row"><div><div class="comp-name">Low barrier to entry</div><div class="comp-detail">Action cams are low-cost relative to professional cameras. GoPro HERO13 retails ~$500–600 CAD. DJI Osmo Action 5 Pro ~$400–550 CAD. 3–5 units + accessories can launch a pilot.</div></div><span class="badge badge-success">Favorable</span></div>
+      <div class="comp-row"><div><div class="comp-name">Business model options</div><div class="comp-detail">1) Owner-operator: you own inventory, rent direct · 2) P2P/marketplace: list others' gear for 5–15% commission · 3) Hybrid. Start owner-operator, validate demand, expand to marketplace.</div></div><span class="badge badge-info">Decision point</span></div>
+      <div class="comp-row"><div><div class="comp-name">Insurance & damage policy</div><div class="comp-detail">Critical risk item. Require credit card hold (standard $200–500 deposit per unit). Consider optional damage waiver fee (+$5–15/day). Use a rental agreement with liability clauses.</div></div><span class="badge badge-danger">Must address</span></div>
+      <div class="comp-row"><div><div class="comp-name">Booking platform</div><div class="comp-detail">Booqable or RentMy recommended for SMB rental ops · Handles inventory, bookings, payments, double-booking prevention · ~$50–100/month</div></div><span class="badge badge-info">Low cost tool</span></div>
+      <div class="comp-row"><div><div class="comp-name">Physical presence vs. online + delivery</div><div class="comp-detail">Pickup/drop-off model works without a storefront. Meetup at a fixed location or offer delivery. Reduces overhead significantly for a phase-1 operation.</div></div><span class="badge badge-success">Flexible</span></div>
+      <div class="comp-row"><div><div class="comp-name">Estimated phase 1 inventory cost</div><div class="comp-detail">3× GoPro HERO13 + 2× DJI Osmo Action 5 + accessories + cases + SD cards · Estimated: $3,500–5,500 CAD all-in</div></div><span class="badge badge-warn">Estimate</span></div>
+    </div>
+  </div>
+</div>
+
+<script>
+function show(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+</script>
+</body>
+</html>

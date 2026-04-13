@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Winnipeg Action Cam Rental — Pricing Sheet</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f2; color: #1a1a18; padding: 24px 16px; line-height: 1.5; }
+  .container { max-width: 860px; margin: 0 auto; }
+  h1 { font-size: 18px; font-weight: 500; margin-bottom: 4px; }
+  .subtitle { font-size: 13px; color: #6b6b67; margin-bottom: 24px; }
+  .sec-label { font-size: 11px; font-weight: 500; letter-spacing: .07em; color: #9b9b96; text-transform: uppercase; margin: 0 0 10px; }
+  .card { background: #fff; border: 0.5px solid #ddddd8; border-radius: 12px; padding: 1rem 1.25rem; margin-bottom: 1rem; }
+  .card.featured { border: 2px solid #378ADD; }
+  .badge { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 8px; white-space: nowrap; }
+  .badge-teal { background: #E1F5EE; color: #0F6E56; }
+  .badge-blue { background: #E6F1FB; color: #185FA5; }
+  .badge-amber { background: #FAEEDA; color: #854F0B; }
+  .badge-purple { background: #EEEDFE; color: #534AB7; }
+  .badge-pop { background: #E6F1FB; color: #185FA5; font-size: 11px; padding: 3px 10px; border-radius: 8px; display: inline-block; margin-bottom: 8px; }
+  .grid3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin: 10px 0; }
+  .price-box { background: #e8e8e4; border-radius: 8px; padding: 10px 12px; text-align: center; }
+  .price-period { font-size: 11px; color: #6b6b67; margin: 0 0 4px; }
+  .price-amt { font-size: 18px; font-weight: 500; color: #1a1a18; margin: 0; }
+  .price-note { font-size: 11px; color: #9b9b96; margin: 4px 0 0; }
+  .item-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 0.5px solid #ddddd8; font-size: 13px; gap: 8px; }
+  .item-row:last-child { border-bottom: none; }
+  .item-name { color: #1a1a18; font-weight: 500; }
+  .item-sub { font-size: 11px; color: #6b6b67; margin-top: 2px; }
+  .item-price { color: #1a1a18; white-space: nowrap; font-size: 12px; }
+  .cam-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; gap: 8px; }
+  .cam-title { font-size: 15px; font-weight: 500; color: #1a1a18; margin: 0; }
+  .cam-sub { font-size: 12px; color: #6b6b67; margin: 3px 0 0; }
+  .deposit-bar { background: #e8e8e4; border-radius: 8px; padding: 10px 14px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; margin-top: 6px; flex-wrap: wrap; gap: 8px; }
+  .deposit-label { color: #6b6b67; }
+  .deposit-val { font-weight: 500; color: #1a1a18; }
+  .bundle-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin-bottom: 1rem; }
+  .bundle-card { background: #fff; border: 0.5px solid #ddddd8; border-radius: 12px; padding: 14px; }
+  .bundle-name { font-size: 14px; font-weight: 500; color: #1a1a18; margin: 0 0 4px; }
+  .bundle-price { font-size: 20px; font-weight: 500; margin: 6px 0 2px; color: #1a1a18; }
+  .bundle-per { font-size: 11px; color: #6b6b67; }
+  .bundle-items { font-size: 12px; color: #6b6b67; margin: 8px 0 0; line-height: 1.6; }
+  .bundle-save { font-size: 11px; background: #E1F5EE; color: #0F6E56; padding: 2px 7px; border-radius: 8px; display: inline-block; margin-top: 6px; }
+  .policy-row { display: flex; gap: 10px; align-items: flex-start; padding: 8px 0; border-bottom: 0.5px solid #ddddd8; font-size: 13px; }
+  .policy-row:last-child { border-bottom: none; }
+  .policy-dot { width: 6px; height: 6px; border-radius: 50%; background: #1D9E75; flex-shrink: 0; margin-top: 5px; }
+  .policy-dot.warn { background: #BA7517; }
+  .policy-dot.info { background: #378ADD; }
+  .policy-text { color: #1a1a18; }
+  .policy-sub { font-size: 11px; color: #6b6b67; margin-top: 2px; }
+  .tab-row { display: flex; gap: 6px; margin-bottom: 1.5rem; flex-wrap: wrap; }
+  .tab { padding: 6px 14px; border: 0.5px solid #c8c7bf; border-radius: 8px; font-size: 13px; cursor: pointer; background: transparent; color: #6b6b67; }
+  .tab:hover { background: #e8e8e4; }
+  .tab.active { background: #e8e8e4; color: #1a1a18; border-color: #9b9b96; font-weight: 500; }
+  .section { display: none; }
+  .section.active { display: block; }
+  .total-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; font-size: 14px; border-bottom: 0.5px solid #ddddd8; }
+  .total-row:last-child { border-bottom: none; font-weight: 500; font-size: 15px; }
+  select { font-size: 13px; padding: 6px 10px; border-radius: 8px; border: 0.5px solid #c8c7bf; background: #fff; color: #1a1a18; cursor: pointer; width: 100%; }
+  label { font-size: 13px; display: flex; align-items: center; gap: 6px; color: #1a1a18; cursor: pointer; }
+  .quote-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-bottom: 1rem; }
+  .quote-checks { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 8px; margin-bottom: 1rem; }
+  .field-label { font-size: 12px; color: #6b6b67; margin-bottom: 4px; }
+  #q-result { background: #e8e8e4; border-radius: 8px; padding: 12px 14px; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>Winnipeg Action Cam Rental — Pricing Sheet</h1>
+  <p class="subtitle">Camera rates, accessory add-ons, packages & quote builder · CAD, tax not included</p>
+
+  <div class="tab-row">
+    <button class="tab active" onclick="showTab('cameras',this)">Cameras</button>
+    <button class="tab" onclick="showTab('accessories',this)">Accessories</button>
+    <button class="tab" onclick="showTab('bundles',this)">Packages</button>
+    <button class="tab" onclick="showTab('policies',this)">Policies & deposits</button>
+    <button class="tab" onclick="showTab('quote',this)">Quote builder</button>
+  </div>
+
+  <div id="cameras" class="section active">
+    <p class="sec-label">Camera rental rates — CAD, tax not included</p>
+    <div class="card featured">
+      <div class="cam-header"><div><div class="badge-pop">Most popular</div><p class="cam-title">GoPro HERO13 Black</p><p class="cam-sub">4K/120fps · waterproof to 10m · HyperSmooth 6.0 · includes mounts kit + 2 batteries + SD</p></div><span class="badge badge-teal">Action / sports</span></div>
+      <div class="grid3"><div class="price-box"><p class="price-period">1 day</p><p class="price-amt">$25</p><p class="price-note">Base rate</p></div><div class="price-box"><p class="price-period">Weekend (Fri–Sun)</p><p class="price-amt">$55</p><p class="price-note">Save $20 vs 3 days</p></div><div class="price-box"><p class="price-period">7 days</p><p class="price-amt">$110</p><p class="price-note">Save $65 vs daily</p></div></div>
+      <div class="deposit-bar"><span class="deposit-label">Security deposit</span><span class="deposit-val">$300 hold on card</span></div>
+    </div>
+    <div class="card">
+      <div class="cam-header"><div><p class="cam-title">DJI Osmo Action 5 Pro</p><p class="cam-sub">4K/120fps · 10-bit color · 39m waterproof · magnetic quick-release · ultra-wide 155°</p></div><span class="badge badge-blue">Action / vlog</span></div>
+      <div class="grid3"><div class="price-box"><p class="price-period">1 day</p><p class="price-amt">$28</p><p class="price-note">Base rate</p></div><div class="price-box"><p class="price-period">Weekend (Fri–Sun)</p><p class="price-amt">$60</p><p class="price-note">Save $24 vs 3 days</p></div><div class="price-box"><p class="price-period">7 days</p><p class="price-amt">$120</p><p class="price-note">Save $76 vs daily</p></div></div>
+      <div class="deposit-bar"><span class="deposit-label">Security deposit</span><span class="deposit-val">$350 hold on card</span></div>
+    </div>
+    <div class="card">
+      <div class="cam-header"><div><p class="cam-title">Insta360 X4</p><p class="cam-sub">8K/30fps 360° · 5.7K/60fps · invisible selfie stick included · AI editing via app</p></div><span class="badge badge-purple">360° / events</span></div>
+      <div class="grid3"><div class="price-box"><p class="price-period">1 day</p><p class="price-amt">$40</p><p class="price-note">Base rate</p></div><div class="price-box"><p class="price-period">Weekend (Fri–Sun)</p><p class="price-amt">$85</p><p class="price-note">Save $35 vs 3 days</p></div><div class="price-box"><p class="price-period">7 days</p><p class="price-amt">$165</p><p class="price-note">Save $115 vs daily</p></div></div>
+      <div class="deposit-bar"><span class="deposit-label">Security deposit</span><span class="deposit-val">$400 hold on card</span></div>
+    </div>
+    <div class="card">
+      <div class="cam-header"><div><p class="cam-title">DJI Osmo Pocket 3</p><p class="cam-sub">4K/120fps · 3-axis gimbal stabilization · 1" CMOS sensor · ideal for vlog & travel</p></div><span class="badge badge-amber">Gimbal / vlog</span></div>
+      <div class="grid3"><div class="price-box"><p class="price-period">1 day</p><p class="price-amt">$35</p><p class="price-note">Base rate</p></div><div class="price-box"><p class="price-period">Weekend (Fri–Sun)</p><p class="price-amt">$75</p><p class="price-note">Save $30 vs 3 days</p></div><div class="price-box"><p class="price-period">7 days</p><p class="price-amt">$145</p><p class="price-note">Save $100 vs daily</p></div></div>
+      <div class="deposit-bar"><span class="deposit-label">Security deposit</span><span class="deposit-val">$400 hold on card</span></div>
+    </div>
+  </div>
+
+  <div id="accessories" class="section">
+    <p class="sec-label">Individual accessory add-ons — per rental period</p>
+    <div class="card">
+      <div class="item-row"><div><div class="item-name">Extra battery pack</div><div class="item-sub">Compatible with rented camera</div></div><span class="item-price">+$5/day · +$10/wknd · +$18/week</span></div>
+      <div class="item-row"><div><div class="item-name">Extra 128GB microSD card</div><div class="item-sub">Pre-formatted, class 10</div></div><span class="item-price">+$4/day · +$8/wknd · +$15/week</span></div>
+      <div class="item-row"><div><div class="item-name">Chest mount harness</div><div class="item-sub">Universal, adjustable</div></div><span class="item-price">+$5/day · +$10/wknd · +$18/week</span></div>
+      <div class="item-row"><div><div class="item-name">Head strap mount</div><div class="item-sub">Hands-free POV</div></div><span class="item-price">+$5/day · +$10/wknd · +$18/week</span></div>
+      <div class="item-row"><div><div class="item-name">Floating hand grip</div><div class="item-sub">Water activities, buoyant</div></div><span class="item-price">+$5/day · +$10/wknd · +$18/week</span></div>
+      <div class="item-row"><div><div class="item-name">Magnetic tripod / mini stand</div><div class="item-sub">Desk, surface, or pole mount</div></div><span class="item-price">+$5/day · +$10/wknd · +$18/week</span></div>
+      <div class="item-row"><div><div class="item-name">Pelican hard case</div><div class="item-sub">Included by default on all rentals</div></div><span class="item-price">Included</span></div>
+      <div class="item-row"><div><div class="item-name">Damage waiver</div><div class="item-sub">Covers accidental damage; excludes loss/theft</div></div><span class="item-price">+$8/day · +$15/wknd · +$25/week</span></div>
+    </div>
+    <p class="sec-label" style="margin-top:1rem">Volume discounts</p>
+    <div class="card">
+      <div class="item-row"><div><div class="item-name">Multi-unit discount (2+ cameras)</div></div><span class="item-price">10% off total</span></div>
+      <div class="item-row"><div><div class="item-name">Multi-unit discount (3+ cameras)</div></div><span class="item-price">15% off total</span></div>
+      <div class="item-row"><div><div class="item-name">Repeat customer discount (3rd rental+)</div></div><span class="item-price">10% off cameras</span></div>
+    </div>
+  </div>
+
+  <div id="bundles" class="section">
+    <p class="sec-label">Pre-built packages — designed for common use cases</p>
+    <div class="bundle-grid">
+      <div class="bundle-card" style="border:2px solid #378ADD"><div class="badge-pop">Best seller</div><p class="bundle-name">Weekend warrior</p><p class="bundle-price">$70</p><p class="bundle-per">Fri–Sun (3 days)</p><p class="bundle-items">GoPro HERO13 Black<br>Chest mount + head strap<br>2× extra batteries<br>128GB SD card<br>Pelican case</p><span class="bundle-save">Save $28 vs a la carte</span></div>
+      <div class="bundle-card"><p class="bundle-name">Event & celebration</p><p class="bundle-price">$100</p><p class="bundle-per">Weekend (Fri–Sun)</p><p class="bundle-items">Insta360 X4 (360°)<br>Invisible selfie stick<br>Extra battery<br>128GB SD card<br>Damage waiver included</p><span class="bundle-save">Save $30 vs a la carte</span></div>
+      <div class="bundle-card"><p class="bundle-name">Content creator kit</p><p class="bundle-price">$95</p><p class="bundle-per">Weekend (Fri–Sun)</p><p class="bundle-items">DJI Osmo Pocket 3<br>Mini tripod + magnetic stand<br>Extra battery<br>128GB SD card<br>Damage waiver included</p><span class="bundle-save">Save $25 vs a la carte</span></div>
+      <div class="bundle-card"><p class="bundle-name">Adventure dual-cam</p><p class="bundle-price">$175</p><p class="bundle-per">Weekend (Fri–Sun)</p><p class="bundle-items">GoPro HERO13 + DJI Osmo Action 5<br>Chest mount + head strap<br>2× extra batteries each<br>2× 128GB SD cards<br>15% multi-unit rate applied</p><span class="bundle-save">Save $50 vs individual weekends</span></div>
+      <div class="bundle-card"><p class="bundle-name">Week-long expedition</p><p class="bundle-price">$155</p><p class="bundle-per">7 days</p><p class="bundle-items">GoPro HERO13 Black<br>Full mounts kit (chest, head, float)<br>3× extra batteries<br>2× 128GB SD cards<br>Damage waiver included</p><span class="bundle-save">Save $40 vs a la carte</span></div>
+      <div class="bundle-card"><p class="bundle-name">Corporate / real estate</p><p class="bundle-price">$220</p><p class="bundle-per">3 days (custom scheduling)</p><p class="bundle-items">Insta360 X4 (360°) + DJI Osmo Pocket 3<br>Full accessory kit<br>Damage waivers included<br>Priority booking + local delivery</p><span class="bundle-save">Phase 2 — Shindico use case</span></div>
+    </div>
+  </div>
+
+  <div id="policies" class="section">
+    <p class="sec-label">Booking & deposit policy</p>
+    <div class="card">
+      <div class="policy-row"><div class="policy-dot"></div><div><div class="policy-text">Credit card pre-authorization required at pickup</div><div class="policy-sub">Debit cards not accepted for deposit. Card must be in renter's name.</div></div></div>
+      <div class="policy-row"><div class="policy-dot"></div><div><div class="policy-text">Deposit holds released within 3 business days of clean return</div><div class="policy-sub">GoPro HERO13: $300 · DJI Osmo Action 5: $350 · Insta360 X4: $400 · DJI Osmo Pocket 3: $400</div></div></div>
+      <div class="policy-row"><div class="policy-dot info"></div><div><div class="policy-text">24-hour advance booking required</div><div class="policy-sub">Same-day availability not guaranteed. High-demand weekends book fast.</div></div></div>
+      <div class="policy-row"><div class="policy-dot info"></div><div><div class="policy-text">Late return fee: 1 full day rate per 4 hours late</div><div class="policy-sub">Communicate early — extensions accommodated when no conflict exists</div></div></div>
+      <div class="policy-row"><div class="policy-dot warn"></div><div><div class="policy-text">Cancellation: free up to 48h before pickup</div><div class="policy-sub">Within 48h: 50% of rental charged. No-show: full rental charged.</div></div></div>
+      <div class="policy-row"><div class="policy-dot warn"></div><div><div class="policy-text">Renter is liable for damage, loss, or theft during rental period</div><div class="policy-sub">Optional damage waiver covers accidental damage only. Theft not covered — renter's liability.</div></div></div>
+      <div class="policy-row"><div class="policy-dot"></div><div><div class="policy-text">Government-issued photo ID required at pickup</div><div class="policy-sub">Must be 18+. Renter must be present — no third-party pickups without prior authorization.</div></div></div>
+    </div>
+  </div>
+
+  <div id="quote" class="section">
+    <p class="sec-label">Quote builder</p>
+    <div class="card">
+      <div class="quote-grid">
+        <div><p class="field-label">Camera</p><select id="q-cam" onchange="calcQuote()"><option value="25,110,55">GoPro HERO13 Black</option><option value="28,120,60">DJI Osmo Action 5 Pro</option><option value="40,165,85">Insta360 X4</option><option value="35,145,75">DJI Osmo Pocket 3</option></select></div>
+        <div><p class="field-label">Rental period</p><select id="q-period" onchange="calcQuote()"><option value="day">1 day</option><option value="weekend" selected>Weekend (Fri–Sun)</option><option value="week">7 days</option></select></div>
+        <div><p class="field-label">Units</p><select id="q-units" onchange="calcQuote()"><option value="1">1 camera</option><option value="2">2 cameras</option><option value="3">3 cameras</option></select></div>
+      </div>
+      <div class="quote-checks">
+        <label><input type="checkbox" id="q-battery" onchange="calcQuote()"> Extra battery</label>
+        <label><input type="checkbox" id="q-sd" onchange="calcQuote()"> Extra SD card</label>
+        <label><input type="checkbox" id="q-chest" onchange="calcQuote()"> Chest mount</label>
+        <label><input type="checkbox" id="q-waiver" onchange="calcQuote()"> Damage waiver</label>
+      </div>
+      <div id="q-result"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+function showTab(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+function calcQuote() {
+  const camVals = document.getElementById('q-cam').value.split(',').map(Number);
+  const period = document.getElementById('q-period').value;
+  const units = parseInt(document.getElementById('q-units').value);
+  const battery = document.getElementById('q-battery').checked;
+  const sd = document.getElementById('q-sd').checked;
+  const chest = document.getElementById('q-chest').checked;
+  const waiver = document.getElementById('q-waiver').checked;
+  const idx = period === 'day' ? 0 : period === 'week' ? 1 : 2;
+  const addBattery = [5,18,10]; const addSd = [4,15,8]; const addChest = [5,18,10]; const addWaiver = [8,25,15];
+  let camBase = camVals[idx] * units;
+  let accessories = ((battery ? addBattery[idx] : 0) + (sd ? addSd[idx] : 0) + (chest ? addChest[idx] : 0) + (waiver ? addWaiver[idx] : 0)) * units;
+  let discount = units === 2 ? Math.round((camBase + accessories) * 0.10) : units >= 3 ? Math.round((camBase + accessories) * 0.15) : 0;
+  const total = camBase + accessories - discount;
+  const gst = Math.round(total * 0.05);
+  const grand = total + gst;
+  const periodLabel = period === 'day' ? '1 day' : period === 'weekend' ? 'weekend (Fri–Sun)' : '7 days';
+  const discLabel = units === 2 ? '10% multi-unit discount' : units >= 3 ? '15% multi-unit discount' : null;
+  let html = `<div class="total-row"><span style="color:#6b6b67">Camera × ${units} (${periodLabel})</span><span>$${camBase}</span></div>`;
+  if (accessories > 0) html += `<div class="total-row"><span style="color:#6b6b67">Accessories</span><span>$${accessories}</span></div>`;
+  if (discount > 0) html += `<div class="total-row"><span style="color:#6b6b67">${discLabel}</span><span style="color:#0F6E56">-$${discount}</span></div>`;
+  html += `<div class="total-row"><span style="color:#6b6b67">GST (5%)</span><span>$${gst}</span></div>`;
+  html += `<div class="total-row"><span>Total</span><span>$${grand}</span></div>`;
+  document.getElementById('q-result').innerHTML = html;
+}
+calcQuote();
+</script>
+</body>
+</html>

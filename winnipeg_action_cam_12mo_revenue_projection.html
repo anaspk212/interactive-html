@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Winnipeg Action Cam Rental — 12-Month Revenue Projection</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f2; color: #1a1a18; padding: 24px 16px; line-height: 1.5; }
+  .container { max-width: 900px; margin: 0 auto; }
+  h1 { font-size: 18px; font-weight: 500; margin-bottom: 4px; }
+  .subtitle { font-size: 13px; color: #6b6b67; margin-bottom: 24px; }
+  .mc { background: #e8e8e4; border-radius: 8px; padding: 12px 14px; }
+  .ml { font-size: 12px; color: #6b6b67; margin: 0 0 3px; }
+  .mv { font-size: 22px; font-weight: 500; color: #1a1a18; margin: 0; }
+  .ms { font-size: 11px; color: #9b9b96; margin: 3px 0 0; }
+  .g4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin-bottom: 1.5rem; }
+  .g2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-bottom: 1.5rem; }
+  .card { background: #fff; border: 0.5px solid #ddddd8; border-radius: 12px; padding: 1rem 1.25rem; margin-bottom: 1rem; }
+  .sec { font-size: 11px; font-weight: 500; letter-spacing: .07em; color: #9b9b96; text-transform: uppercase; margin: 0 0 10px; }
+  .row { display: flex; justify-content: space-between; align-items: center; padding: 7px 0; border-bottom: 0.5px solid #ddddd8; font-size: 13px; }
+  .row:last-child { border-bottom: none; }
+  .rn { color: #6b6b67; }
+  .rv { color: #1a1a18; font-weight: 500; }
+  .rv.neu { color: #185FA5; }
+  .slider-row { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+  .slider-label { font-size: 13px; color: #6b6b67; min-width: 160px; }
+  .slider-val { font-size: 13px; font-weight: 500; color: #1a1a18; min-width: 50px; text-align: right; }
+  .tab-row { display: flex; gap: 6px; margin-bottom: 1.5rem; flex-wrap: wrap; }
+  .tab { padding: 6px 14px; border: 0.5px solid #c8c7bf; border-radius: 8px; font-size: 13px; cursor: pointer; background: transparent; color: #6b6b67; }
+  .tab:hover { background: #e8e8e4; }
+  .tab.active { background: #e8e8e4; color: #1a1a18; border-color: #9b9b96; font-weight: 500; }
+  .section { display: none; }
+  .section.active { display: block; }
+  .season-pill { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 8px; }
+  .sp-peak { background: #E1F5EE; color: #0F6E56; }
+  .sp-shoulder { background: #FAEEDA; color: #854F0B; }
+  .sp-low { background: #FCEBEB; color: #A32D2D; }
+  table.mt { width: 100%; border-collapse: collapse; font-size: 12px; }
+  table.mt th { text-align: left; padding: 7px 8px; color: #6b6b67; font-weight: 500; border-bottom: 0.5px solid #ddddd8; font-size: 11px; }
+  table.mt td { padding: 7px 8px; border-bottom: 0.5px solid #ddddd8; color: #1a1a18; vertical-align: top; }
+  table.mt tr:last-child td { border-bottom: none; }
+  input[type=range] { flex: 1; accent-color: #1D9E75; }
+  .chart-wrap { position: relative; width: 100%; height: 300px; margin-top: 8px; }
+  .legend { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 8px; font-size: 12px; color: #6b6b67; }
+  .legend span { display: flex; align-items: center; gap: 4px; }
+  .legend-dot { width: 10px; height: 10px; border-radius: 2px; display: inline-block; }
+  @media (max-width: 600px) { .g4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } .g2 { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>Winnipeg Action Cam Rental — 12-Month Revenue Projection</h1>
+  <p class="subtitle">Spring 2026 launch · 5-unit fleet · lean operating model · adjust assumptions below</p>
+
+  <div class="tab-row">
+    <button class="tab active" onclick="showTab('overview',this)">Overview</button>
+    <button class="tab" onclick="showTab('monthly',this)">Monthly breakdown</button>
+    <button class="tab" onclick="showTab('costs',this)">Costs & profit</button>
+    <button class="tab" onclick="showTab('assumptions',this)">Assumptions & scenarios</button>
+  </div>
+
+  <div id="overview" class="section active">
+    <div class="g4" id="summary-cards"></div>
+    <div class="legend">
+      <span><span class="legend-dot" style="background:#1D9E75"></span>Gross revenue</span>
+      <span><span class="legend-dot" style="background:rgba(136,135,128,0.5)"></span>Operating costs</span>
+      <span><span class="legend-dot" style="background:#378ADD"></span>Net profit</span>
+    </div>
+    <div class="chart-wrap"><canvas id="chartOverview"></canvas></div>
+  </div>
+
+  <div id="monthly" class="section">
+    <p class="sec">Month-by-month detail</p>
+    <div style="overflow-x:auto">
+      <table class="mt">
+        <thead><tr><th>Month</th><th>Season</th><th>Util%</th><th>Rental days</th><th>Gross rev</th><th>Add-on rev</th><th>Total rev</th><th>Costs</th><th>Net</th></tr></thead>
+        <tbody id="monthly-tbody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div id="costs" class="section">
+    <p class="sec">Startup costs (one-time)</p>
+    <div class="card">
+      <div class="row"><span class="rn">2× GoPro HERO13 Black</span><span class="rv">$1,100</span></div>
+      <div class="row"><span class="rn">1× DJI Osmo Action 5 Pro</span><span class="rv">$520</span></div>
+      <div class="row"><span class="rn">1× Insta360 X4</span><span class="rv">$580</span></div>
+      <div class="row"><span class="rn">1× DJI Osmo Pocket 3</span><span class="rv">$560</span></div>
+      <div class="row"><span class="rn">Accessories kit (mounts, SD cards, batteries ×5)</span><span class="rv">$450</span></div>
+      <div class="row"><span class="rn">5× Pelican cases</span><span class="rv">$300</span></div>
+      <div class="row"><span class="rn">Rental software (Booqable, annual)</span><span class="rv">$600</span></div>
+      <div class="row"><span class="rn">Website / domain / branding</span><span class="rv">$200</span></div>
+      <div class="row"><span class="rn">Insurance (annual, equipment floater)</span><span class="rv">$400</span></div>
+      <div class="row" style="font-weight:500"><span class="rn" style="font-weight:500">Total startup</span><span class="rv neu">$4,710</span></div>
+    </div>
+    <p class="sec">Monthly operating costs (lean model)</p>
+    <div class="card">
+      <div class="row"><span class="rn">Booking software (Booqable)</span><span class="rv">$50/mo</span></div>
+      <div class="row"><span class="rn">Insurance (equipment floater, pro-rated)</span><span class="rv">$33/mo</span></div>
+      <div class="row"><span class="rn">Maintenance & cleaning supplies</span><span class="rv">$20/mo</span></div>
+      <div class="row"><span class="rn">Packaging / consumables</span><span class="rv">$17/mo</span></div>
+      <div class="row"><span class="rn">Total monthly opex</span><span class="rv neu">$120/mo</span></div>
+    </div>
+    <p class="sec">Payback analysis</p>
+    <div class="g2" id="payback-cards"></div>
+  </div>
+
+  <div id="assumptions" class="section">
+    <p class="sec">Adjust assumptions</p>
+    <div class="card">
+      <div class="slider-row"><span class="slider-label">Base utilization</span><input type="range" min="10" max="60" value="30" step="1" id="sl-util" oninput="onSlider()"><span class="slider-val" id="sv-util">30%</span></div>
+      <div class="slider-row"><span class="slider-label">Accessory attach rate</span><input type="range" min="0" max="50" value="20" step="1" id="sl-addon" oninput="onSlider()"><span class="slider-val" id="sv-addon">20%</span></div>
+      <div class="slider-row"><span class="slider-label">Avg rental duration (days)</span><input type="range" min="1" max="5" value="2" step="1" id="sl-dur" oninput="onSlider()"><span class="slider-val" id="sv-dur">2 days</span></div>
+    </div>
+    <p class="sec">Scenario comparison</p>
+    <div id="scenario-cards" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-bottom:1rem"></div>
+    <p class="sec">Fleet composition</p>
+    <div class="card">
+      <div class="row"><span class="rn">2× GoPro HERO13 Black — $25/day</span><span class="rv">High demand · sports / events</span></div>
+      <div class="row"><span class="rn">1× DJI Osmo Action 5 Pro — $28/day</span><span class="rv">Content / action</span></div>
+      <div class="row"><span class="rn">1× Insta360 X4 — $40/day</span><span class="rv">360° / weddings</span></div>
+      <div class="row"><span class="rn">1× DJI Osmo Pocket 3 — $35/day</span><span class="rv">Vlog / travel</span></div>
+      <div class="row" style="font-weight:500"><span class="rn" style="font-weight:500">Blended avg daily rate</span><span class="rv neu">$30.60/unit</span></div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+const MONTH_LABELS=['Apr 26','May 26','Jun 26','Jul 26','Aug 26','Sep 26','Oct 26','Nov 26','Dec 26','Jan 27','Feb 27','Mar 27'];
+const SEASON_TYPE=['shoulder','peak','peak','peak','peak','shoulder','shoulder','low','low','low','low','shoulder'];
+const SEASON_MULT=[0.75,1.0,1.15,1.25,1.15,0.90,0.80,0.55,0.65,0.50,0.45,0.70];
+const RAMP_MULT=[0.70,0.80,0.90,1.00,1.00,1.00,1.00,1.00,1.00,1.00,1.00,1.00];
+const UNITS=5, BLENDED=30.60, DPM=30, OPEX=120, INS=400, SW=600, STARTUP=4710;
+let chartObj=null;
+
+function calc(u,a,d){
+  return MONTH_LABELS.map((label,i)=>{
+    const util=Math.min(u/100*SEASON_MULT[i]*RAMP_MULT[i],0.85);
+    const rented=Math.round(UNITS*DPM*util);
+    const rentalRev=Math.round(rented*BLENDED);
+    const addonRev=Math.round(rentalRev*a/100);
+    const total=rentalRev+addonRev;
+    const opex=OPEX+Math.round((INS+SW)/12);
+    return{label,season:SEASON_TYPE[i],util:Math.round(util*100),rented,rentalRev,addonRev,total,opex,net:total-opex};
+  });
+}
+function fmt(n){return'$'+Math.abs(n).toLocaleString();}
+function fmtSign(n){return(n<0?'-':'')+'$'+Math.abs(n).toLocaleString();}
+
+function renderAll(){
+  const u=parseInt(document.getElementById('sl-util').value);
+  const a=parseInt(document.getElementById('sl-addon').value);
+  const d=parseInt(document.getElementById('sl-dur').value);
+  document.getElementById('sv-util').textContent=u+'%';
+  document.getElementById('sv-addon').textContent=a+'%';
+  document.getElementById('sv-dur').textContent=d+(d===1?' day':' days');
+
+  const months=calc(u,a,d);
+  const totalRev=months.reduce((s,m)=>s+m.total,0);
+  const totalNet=months.reduce((s,m)=>s+m.net,0);
+  const bem=months.findIndex((_,i)=>months.slice(0,i+1).reduce((s,m)=>s+m.net,0)>=STARTUP);
+
+  document.getElementById('summary-cards').innerHTML=`
+    <div class="mc"><p class="ml">12-mo gross revenue</p><p class="mv">${fmt(totalRev)}</p><p class="ms">CAD, excl. GST</p></div>
+    <div class="mc"><p class="ml">12-mo net profit</p><p class="mv" style="color:${totalNet>=0?'#0F6E56':'#A32D2D'}">${fmtSign(totalNet)}</p><p class="ms">After lean opex</p></div>
+    <div class="mc"><p class="ml">Startup payback</p><p class="mv">${bem>=0?MONTH_LABELS[bem]:'> 12 mo'}</p><p class="ms">$4,710 recovered</p></div>
+    <div class="mc"><p class="ml">Avg monthly revenue</p><p class="mv">${fmt(Math.round(totalRev/12))}</p><p class="ms">12-month average</p></div>`;
+
+  if(chartObj)chartObj.destroy();
+  chartObj=new Chart(document.getElementById('chartOverview'),{
+    type:'bar',
+    data:{labels:MONTH_LABELS,datasets:[
+      {label:'Gross revenue',data:months.map(m=>m.total),backgroundColor:'#1D9E75',order:2},
+      {label:'Operating costs',data:months.map(m=>m.opex),backgroundColor:'rgba(136,135,128,0.4)',borderColor:'#5F5E5A',borderWidth:1,order:2},
+      {label:'Net profit',data:months.map(m=>m.net),type:'line',borderColor:'#378ADD',backgroundColor:'transparent',borderWidth:2,pointRadius:3,pointBackgroundColor:'#378ADD',order:1,tension:0.3}
+    ]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:(ctx)=>ctx.dataset.label+': $'+Math.round(ctx.parsed.y).toLocaleString()}}},scales:{x:{ticks:{font:{size:11},autoSkip:false,maxRotation:45},grid:{display:false}},y:{ticks:{callback:v=>'$'+Math.round(v/1000)+'k',font:{size:11}},grid:{color:'rgba(0,0,0,0.06)'}}}}
+  });
+
+  document.getElementById('monthly-tbody').innerHTML=months.map(m=>{
+    const sp=m.season==='peak'?'sp-peak':m.season==='shoulder'?'sp-shoulder':'sp-low';
+    const sl=m.season==='peak'?'Peak':m.season==='shoulder'?'Shoulder':'Low';
+    return`<tr><td>${m.label}</td><td><span class="season-pill ${sp}">${sl}</span></td><td>${m.util}%</td><td>${m.rented}</td><td>${fmt(m.rentalRev)}</td><td>${fmt(m.addonRev)}</td><td style="font-weight:500">${fmt(m.total)}</td><td>${fmt(m.opex)}</td><td style="color:${m.net>=0?'#0F6E56':'#A32D2D'};font-weight:500">${fmtSign(m.net)}</td></tr>`;
+  }).join('');
+
+  const cumNet=months.reduce((s,m)=>s+m.net,0);
+  const roi=Math.round((cumNet/STARTUP)*100);
+  document.getElementById('payback-cards').innerHTML=`
+    <div class="mc"><p class="ml">Total startup investment</p><p class="mv">$4,710</p><p class="ms">Equipment + software + insurance</p></div>
+    <div class="mc"><p class="ml">12-mo cumulative net</p><p class="mv" style="color:${cumNet>=0?'#0F6E56':'#A32D2D'}">${fmtSign(cumNet)}</p><p class="ms">${roi}% ROI on startup cost</p></div>`;
+
+  const scenarios=[
+    {label:'Conservative',u:20,a:10,color:'#A32D2D',bg:'#FCEBEB'},
+    {label:'Base',u,a,color:'#185FA5',bg:'#E6F1FB'},
+    {label:'Optimistic',u:45,a:30,color:'#0F6E56',bg:'#E1F5EE'},
+  ];
+  document.getElementById('scenario-cards').innerHTML=scenarios.map(s=>{
+    const sm=calc(s.u,s.a,2);
+    const sr=sm.reduce((t,m)=>t+m.total,0);
+    const sn=sm.reduce((t,m)=>t+m.net,0);
+    const isBase=s.label==='Base';
+    return`<div class="card" style="${isBase?'border:2px solid #378ADD':''}"><div style="font-size:12px;font-weight:500;padding:2px 8px;border-radius:8px;display:inline-block;margin-bottom:8px;background:${s.bg};color:${s.color}">${s.label}</div><p style="font-size:11px;color:#6b6b67;margin:0 0 2px">Util: ${s.u}% · Add-on: ${s.a}%</p><p style="font-size:16px;font-weight:500;margin:6px 0 2px">${fmt(sr)}</p><p style="font-size:11px;color:#6b6b67;margin:0 0 6px">gross revenue</p><p style="font-size:14px;font-weight:500;color:${sn>=0?'#0F6E56':'#A32D2D'}">${fmtSign(sn)} net</p></div>`;
+  }).join('');
+}
+
+function onSlider(){renderAll();}
+function showTab(id,btn){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+  if(id==='overview')setTimeout(renderAll,50);
+}
+renderAll();
+</script>
+</body>
+</html>
